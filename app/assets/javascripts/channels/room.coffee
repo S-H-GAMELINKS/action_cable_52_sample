@@ -9,7 +9,6 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     alert(data["message"])
 
   speak: (message, room_id) ->
-    console.log(room_id)
     @perform 'speak', {'message': message, "room_id": room_id}
 
 $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
