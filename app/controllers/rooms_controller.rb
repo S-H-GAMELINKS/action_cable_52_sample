@@ -10,6 +10,7 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+    @comments = Comment.where(room_id: params[:id])
   end
 
   # GET /rooms/new
