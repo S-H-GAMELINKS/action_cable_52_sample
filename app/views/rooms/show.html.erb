@@ -5,7 +5,9 @@
   <%= @room.name %>
 </p>
 
-<%= render @comments %>
+<div id="comments">
+  <%= render @comments %>
+</div>
 
 <%= render 'comments/new' %>
 
