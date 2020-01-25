@@ -6,14 +6,14 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    console.log(data)
     alert(data["message"])
 
-  speak: (message) ->
-    @perform 'speak', 'message': message
+  speak: (message, room_id) ->
+    console.log(room_id)
+    @perform 'speak', {'message': message, "room_id": room_id}
 
 $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
   if event.keyCode is 13 # return = send
-    App.room.speak event.target.value
+    App.room.speak(event.target.value, location.pathname.replace(/\/rooms\//, ""))
     event.target.value = ''
     event.preventDefault()
